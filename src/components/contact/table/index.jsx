@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Put from "./../../../assets/image/icons-put.png";
 import Delete from "./../../../assets/image/icons-delete.png";
 import { useSelector } from "react-redux";
+import TableCommon from "../../common/table";
 export default function TableAdd({ onClickDelete, onClickPut }) {
   const ContactGetState = useSelector(
     (state) => state.contact.getContact?.Data
@@ -38,83 +39,80 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       id: 3,
       title: "время/день/месяц/год",
     },
+  ];
+  const data = [];
+  ContactGetState.map((elem) => {
+    data.push({
+      key: elem.id,
+      Имя: elem.name,
+      Телефонныйномер: elem.phone_number,
+      Времяденьмесяцгод: DateFormat(elem.createdAt),
+    });
+  });
+
+  const columns = [
     {
-      id: 3,
-      title: "время/день/месяц/год",
+      title: "Имя",
+      dataIndex: "Имя",
+      key: "Имя",
+      fixed: "left",
+    },
+    {
+      title: "Телефонный номер",
+      dataIndex: "Телефонныйномер",
+      key: "Телефонныйномер",
+    },
+    {
+      title: "Время/день/месяц/год",
+      dataIndex: "Времяденьмесяцгод",
+      key: "Времяденьмесяцгод",
     },
   ];
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {HeaderRows.map((elem, index) => (
-              <>
-                <TableCell align={elem.algin} key={index}>
-                  {elem.title}
-                </TableCell>
-              </>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {ContactGetState.map((row) => (
-            <TableRow
-              key={row.partners_id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.username}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.phone}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.message}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {DateFormat(row.date)}
-              </TableCell>
-              {/* <TableCell align="right">
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.partners_id}
-                  onClick={onClickPut}
-                >
-                  <img
-                    id={row.partners_id}
-                    src={Put}
-                    width={25}
-                    height={25}
-                    alt=""
-                  />
-                </button>
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.partners_id}
-                  onClick={onClickDelete}
-                >
-                  <img
-                    id={row.partners_id}
-                    src={Delete}
-                    width={25}
-                    height={25}
-                    alt=""
-                  />
-                </button>
-              </TableCell> */}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    // <TableContainer component={Paper}>
+    //   <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    //     <TableHead>
+    //       <TableRow>
+    //         {HeaderRows.map((elem, index) => (
+    //           <>
+    //             <TableCell align={elem.algin} key={index}>
+    //               {elem.title}
+    //             </TableCell>
+    //           </>
+    //         ))}
+    //       </TableRow>
+    //     </TableHead>
+    //     <TableBody>
+    //       {ContactGetState.map((row) => (
+    //         <TableRow
+    //           key={row.id}
+    //           sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    //         >
+    //           <TableCell component="th" scope="row">
+    //             {row.name}
+    //           </TableCell>
+    //           <TableCell component="th" scope="row">
+    //             {row.phone_number}
+    //           </TableCell>
+
+    //           <TableCell component="th" scope="row">
+    //             {DateFormat(row.createdAt)}
+    //           </TableCell>
+    //         </TableRow>
+    //       ))}
+    //     </TableBody>
+    //   </Table>
+    // </TableContainer>
+    <>
+      <TableCommon
+        bordered
+        columns={columns}
+        data={data}
+        pagination={false}
+        scroll={{
+          y: 400,
+        }}
+      />
+    </>
   );
 }

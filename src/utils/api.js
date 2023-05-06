@@ -1,1 +1,1 @@
-export const API_URL = "https://interiorapi.supersite.uz";
+export const API_URL = "https://api.topstylegroup.uz";

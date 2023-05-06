@@ -1,47 +1,59 @@
-
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { DeleteProjects, GetProjects } from '../../redux/projects';
-import Delete from './delete';
-import AdminAddForm from './post';
-import Put from './put';
-import TableAdd from './table';
-function ProjectsComponent({open , handleClose}) {
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { DeleteProjects, GetProjects } from "../../redux/projects";
+import Delete from "./delete";
+import ProjectAddForm from "./post";
+import Put from "./put";
+import TableAdd from "./table";
+function ProjectsComponent({ open, handleClose }) {
   const dispatch = useDispatch();
-  const [adminId , setAdminId] = useState();
-  const [openDelete , setOpenDelete] = useState(false);
-  const handleCloseDelete = () => setOpenDelete(false)
+  const [imageId, setImageId] = useState();
+  const [selectId, setSelectId] = useState(null);
+  const [openDelete, setOpenDelete] = useState(false);
+  const handleCloseDelete = () => setOpenDelete(false);
   const handleDeleteModal = (e) => {
-   setAdminId(e.target.id)
-   setOpenDelete(true)
-  }
-  const [openPut , setOpenPut] = useState(false);
-  const handleClosePut = () => setOpenPut(false)
+    setImageId(e.currentTarget.id);
+    setOpenDelete(true);
+  };
+
+  const [openPut, setOpenPut] = useState(false);
+  const handleClosePut = () => setOpenPut(false);
   const handlePutModal = (e) => {
-   setAdminId(e.target.id)
-   setOpenPut(true)
-  }
-  const HandleDelete =  async() =>{
-    await dispatch(DeleteProjects(adminId))
-    dispatch(GetProjects())
-    handleCloseDelete()
-  }
+    setImageId(e.currentTarget.id);
+    setOpenPut(true);
+  };
+  const HandleDelete = async () => {
+    await dispatch(DeleteProjects(imageId));
+    dispatch(GetProjects());
+    handleCloseDelete();
+  };
   return (
-      <>
-      <AdminAddForm Open={open} HandleClose={handleClose}/>
-      <TableAdd onClickDelete={handleDeleteModal} onClickPut={handlePutModal} />
+    <>
+      <ProjectAddForm
+        Open={open}
+        HandleClose={handleClose}
+        setSelectId={setSelectId}
+        selectId={selectId}
+      />
+      <TableAdd
+        onClickDelete={handleDeleteModal}
+        onClickPut={handlePutModal}
+        selectId={selectId}
+      />
       <Delete
-      HandleDelete={HandleDelete}
-      openDelete={openDelete}
-      handleCloseDelete={handleCloseDelete}
-/>
-<Put
-      HandlePut={adminId}
-      openPut={openPut}
-      handleClosePut={handleClosePut}
-/>
-      </>
-  )
+        HandleDelete={HandleDelete}
+        openDelete={openDelete}
+        handleCloseDelete={handleCloseDelete}
+      />
+      <Put
+        put_id={imageId}
+        openPut={openPut}
+        setSelectId={setSelectId}
+        selectId={selectId}
+        handleClosePut={handleClosePut}
+      />
+    </>
+  );
 }
 
-export default ProjectsComponent
+export default ProjectsComponent;

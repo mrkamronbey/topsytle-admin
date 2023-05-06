@@ -1,60 +1,48 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-    h3{
-        text-align: center;
-        font-size: 26px;
-        margin-bottom: 20px;
-    }
-    button{
-        width: 100%;
-        padding: 15px;
-        font-size: 26px;
-        background-color: black;
-        border: 2px solid white;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
-        margin-top:100px;
-    }
-    .Buttons{
-        display: flex;
-        justify-content: space-around;
-        margin-top: 40px;
-    }
-    input[type="file"] {
+export const Wrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  .selects {
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+
+  input[type="file"] {
     display: none;
-}
-label{
-    border-style: dotted;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    border-radius: 15px;
+    border-style: solid;
     text-align: center;
-    padding: 15px 35px 18px 35px;
+    padding: 10px 10px 15px 10px;
     cursor: pointer;
+  }
+  .spins {
     width: 100%;
-}
-.loading{
-    position: absolute;
-    text-align: center;
-    background-color: #FFD700;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+    border-radius: 15px;
     padding-top: 15px;
     padding-bottom: 20px;
-    width: 86%;
+    width: 100%;
     margin-top: 2px;
-}
-.span-download{
-    font-size: 22px;
+  }
+  .span-download {
+    font-size: 80px;
     position: relative;
-    top: 7px;
+    top: 10px;
     margin-right: 5px;
-}
-input{
-        border: none;
-        padding: 15px;
-        border-bottom: 2px solid white;
-        color: white;
-        width: 100%;
-        background-color: transparent;
-        margin-top: 15px;
-        margin-bottom: 20px;
-    }
-`
+  }
+`;
