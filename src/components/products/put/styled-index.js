@@ -10,6 +10,9 @@ export const Wrapper = styled.form`
     text-align: center;
     font-size: 26px;
   }
+  .selects {
+    margin-bottom: 10px;
+  }
 
   input {
     font-family: "Ubuntu", sans-serif;

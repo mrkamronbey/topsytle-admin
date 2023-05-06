@@ -11,6 +11,7 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
   const dispatch = useDispatch();
   const titleUz = useRef();
   const titleRu = useRef();
+  const categoryPuts = useSelector((state) => state.category);
   const categoryGets = useSelector((state) => state.category.categoryGet.data);
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,10 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
     await dispatch(CategoryPut({ body, id: ids }));
     dispatch(CategoryGet());
   };
+  if (categoryPuts.categoryPut.Success == true) {
+    handleClosePut();
+    window.location.reload();
+  }
   return (
     <>
       <ModalCommon width={550} open={openPut} handleClose={handleClosePut}>

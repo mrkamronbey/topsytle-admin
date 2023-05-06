@@ -6,10 +6,10 @@ import "./styles.css";
 import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductPut, ProductGet } from "../../../redux/products";
-import { CategoryGet } from "../../../redux/category";
+import { CategoryGet } from "../../../redux/category/index";
+import SelectCommon from "../../common/select/index";
 
-function Put({ openPut, handleClosePut, put_id }) {
-  const [selectId, setSelectId] = useState(null);
+function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
   const ids = put_id;
   const dispatch = useDispatch();
   const titleUz = useRef();
@@ -47,6 +47,14 @@ function Put({ openPut, handleClosePut, put_id }) {
     setSelectId(e.currentTarget.value);
   };
 
+  const options = [];
+  categoryGets.map((elem) =>
+    options.push({
+      value: elem.id,
+      label: elem.category_name_ru,
+    })
+  );
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -74,7 +82,7 @@ function Put({ openPut, handleClosePut, put_id }) {
   };
   if (productPut.productPut.Success == true) {
     handleClosePut();
-    window.location.reload()
+    window.location.reload();
   }
   return (
     <>
@@ -93,13 +101,13 @@ function Put({ openPut, handleClosePut, put_id }) {
                   <>
                     <Row className="row">
                       <Col className="col" lg={12}>
-                        <select onClick={handleSelect}>
-                          {categoryGets.map((elem) => (
-                            <option value={elem.id}>
-                              {elem.category_name_ru}
-                            </option>
-                          ))}
-                        </select>
+                        <div className="selects">
+                          <SelectCommon
+                            onChange={(e) => setSelectId(e)}
+                            placeholder="Select"
+                            options={options}
+                          />
+                        </div>
                       </Col>
                       <Col className="col" lg={6}>
                         <input

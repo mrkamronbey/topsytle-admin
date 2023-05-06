@@ -7,6 +7,7 @@ import Put from "./put";
 import TableAdd from "./table";
 function ProductsComponent({ open, handleClose }) {
   const dispatch = useDispatch();
+  const [selectId, setSelectId] = useState(null);
   const [productId, setProductId] = useState();
   const [openDelete, setOpenDelete] = useState(false);
   const handleCloseDelete = () => setOpenDelete(false);
@@ -14,7 +15,7 @@ function ProductsComponent({ open, handleClose }) {
     setProductId(e.target.id);
     setOpenDelete(true);
   };
- 
+
   const [openPut, setOpenPut] = useState(false);
   const handleClosePut = () => setOpenPut(false);
   const handlePutModal = (e) => {
@@ -27,7 +28,12 @@ function ProductsComponent({ open, handleClose }) {
 
   return (
     <>
-      <ProductAddForm Open={open} HandleClose={handleClose} />
+      <ProductAddForm
+        setSelectId={setSelectId}
+        selectId={selectId}
+        Open={open}
+        HandleClose={handleClose}
+      />
       <TableAdd onClickDelete={handleDeleteModal} onClickPut={handlePutModal} />
       <Delete
         productId={productId}
@@ -36,6 +42,8 @@ function ProductsComponent({ open, handleClose }) {
         handleCloseDelete={handleCloseDelete}
       />
       <Put
+        setSelectId={setSelectId}
+        selectId={selectId}
         put_id={productId}
         openPut={openPut}
         handleClosePut={handleClosePut}

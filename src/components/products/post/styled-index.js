@@ -7,4 +7,7 @@ export const Wrapper = styled.form`
     margin-bottom: 15px;
     font-size: 24px;
   }
+  .selects {
+    margin-bottom: 10px;
+  }
 `;

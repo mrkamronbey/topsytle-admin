@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductPost, ProductGet } from "../../../redux/products/index";
 import { CategoryGet } from "../../../redux/category/index";
 import { Row, Col } from "react-grid-system";
+import SelectCommon from "../../common/select/index";
 import "./styles.css";
 
-function ProductAddForm({ Open, HandleClose }) {
-  const [selectId, setSelectId] = useState(null);
+function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
   const dispatch = useDispatch();
   const titleUz = useRef();
   const titleRu = useRef();
@@ -34,9 +34,6 @@ function ProductAddForm({ Open, HandleClose }) {
     dispatch(CategoryGet());
   }, []);
   // category get
-  const handleSelect = (e) => {
-    setSelectId(e.currentTarget.value);
-  };
 
   // product post
   const productPost = useSelector((state) => state.product);
@@ -68,23 +65,34 @@ function ProductAddForm({ Open, HandleClose }) {
   };
   if (productPost.productPost.Success == true) {
     HandleClose();
-    window.location.reload()
+    window.location.reload();
   }
+
+  const options = [];
+  categoryGets.map((elem) =>
+    options.push({
+      value: elem.id,
+      label: elem.category_name_ru,
+    })
+  );
   // product post
   return (
     <ModalCommon width={550} height={400} open={Open} handleClose={HandleClose}>
       <>
         <Wrapper onSubmit={HandleSubmit}>
           <h3>Добавить продукт</h3>
+
           <div className="input_wrap">
             <div className="scrool">
               <Row className="row">
                 <Col className="col" lg={12}>
-                  <select>
-                    {categoryGets.map((elem) => (
-                      <option value={elem.id}>{elem.category_name_ru}</option>
-                    ))}
-                  </select>
+                  <div className="selects">
+                    <SelectCommon
+                      onChange={(e) => setSelectId(e)}
+                      placeholder="Select"
+                      options={options}
+                    />
+                  </div>
                 </Col>
                 <Col className="col" lg={6}>
                   <input
