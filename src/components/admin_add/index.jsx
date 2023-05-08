@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { adminDelete } from "../../redux/admin_add";
+import { adminDelete, adminGet } from "../../redux/admin_add";
 import Delete from "./delete";
 import AdminAddForm from "./post";
 import Put from "./put";
@@ -20,8 +20,10 @@ function AdminAddComponent({ open, handleClose }) {
     setAdminId(e.target.id);
     setOpenPut(true);
   };
-  const HandleDelete = () => {
-    dispatch(adminDelete(adminId));
+  const HandleDelete = async () => {
+    await dispatch(adminDelete(adminId));
+    dispatch(adminGet());
+    handleCloseDelete();
   };
   return (
     <>

@@ -1,86 +1,58 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Put from "./../../../assets/image/icons-put.png";
-import Delete from "./../../../assets/image/icons-delete.png";
 import { useSelector } from "react-redux";
+import TableCommon from "../../common/table";
+import "./styles.css"
+
+
 export default function TableAdd({ onClickDelete, onClickPut }) {
   const adminGetState = useSelector((state) => state.adminadd);
   const rows = adminGetState.userGet?.data;
-  const HeaderRows = [
+
+  const data = [];
+  rows.map((elem) => {
+    data.push({
+      key: elem.id,
+      Имя: elem.name,
+      Элпочта: elem.email,
+      Действие: (
+        <div className="btn-wrap">
+          <button onClick={onClickPut} id={elem.id}>
+            <i id={elem.id} class="bx bx-message-square-edit"></i>
+          </button>
+          <button onClick={onClickDelete} id={elem.id}>
+            <i id={elem.id} class="bx bxs-trash"></i>
+          </button>
+        </div>
+      ),
+    });
+  });
+
+  const columns = [
     {
-      id: 1,
-      title: "Name",
+      title: "Имя",
+      dataIndex: "Имя",
+      key: "Имя",
     },
     {
-      id: 2,
-      title: "Email",
+      title: "Эл. почта",
+      dataIndex: "Элпочта",
+      key: "Элпочта",
     },
     {
-      id: 3,
-      title: "Delete",
-      algin: "right",
+      title: "Действие",
+      dataIndex: "Действие",
+      key: "Действие",
     },
   ];
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {HeaderRows.map((elem, index) => (
-              <>
-                <TableCell align={elem.algin} key={index}>
-                  {elem.title}
-                </TableCell>
-              </>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.email}
-              </TableCell>
-              <TableCell align="right">
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.id}
-                  onClick={onClickPut}
-                >
-                  <img id={row.id} src={Put} width={25} height={25} alt="" />
-                </button>{" "}
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.id}
-                  onClick={onClickDelete}
-                >
-                  <img id={row.id} src={Delete} width={25} height={25} alt="" />
-                </button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <TableCommon
+      bordered
+      columns={columns}
+      data={data}
+      pagination={false}
+      scroll={{
+        y: 330,
+      }}
+    />
   );
 }

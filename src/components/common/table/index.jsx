@@ -1,5 +1,6 @@
 import { Table, Switch } from "antd";
 import styles from "./style-module.css";
+import './styles.css'
 
 function TableCommon({
   columns,

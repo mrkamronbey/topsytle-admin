@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import { Button, Tooltip } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -24,6 +25,7 @@ import { adminGet } from "../../redux/admin_add/index";
 const { Header, Sider, Content } = Layout;
 
 const Sidebar = ({ children }) => {
+  const text = <span>Выйти</span>;
   const dispatch = useDispatch();
   const adminGetState = useSelector((state) => state.adminadd);
   const rows = adminGetState.userGet?.data;
@@ -137,7 +139,7 @@ const Sidebar = ({ children }) => {
                 onClick: () => setCollapsed(!collapsed),
               }
             )}
-              <img src={logo} alt="" />
+            <img src={logo} alt="" />
           </div>
           <div className="left">
             <div className="icons">
@@ -157,18 +159,13 @@ const Sidebar = ({ children }) => {
                 ))}
               </div>
               <UserOutlined className="user-icon" />
-              <button onClick={HandleLogout}>
-                <LoginOutlined />
-              </button>
+              <Tooltip title={text}>
+                <button onClick={HandleLogout}>
+                  <LoginOutlined />
+                </button>
+              </Tooltip>
             </div>
           </div>
-
-          {/* <div className="logout"> */}
-          {/* <button onClick={HandleLogout}> */}
-          {/* <LoginOutlined onClick={HandleLogout}/> */}
-          {/* <span class="title">Выйти</span> */}
-          {/* </button> */}
-          {/* </div> */}
         </Header>
         <Content
           style={{

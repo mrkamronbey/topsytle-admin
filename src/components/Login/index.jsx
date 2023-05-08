@@ -5,7 +5,12 @@ import { adminAuth } from "../../redux/login/authSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GetProjects } from "../../redux/projects";
-import './styles.css'
+import "./styles.css";
+import CommonButton from "../../components/common/button/index";
+import login1 from "../../assets/image/loginimg.png";
+import login2 from "../../assets/image/loginimg1.png";
+import logo from "../../assets/image/logos.png";
+
 const LoginComponent = () => {
   const EmailUserf = useRef();
   const dispatch = useDispatch();
@@ -27,32 +32,48 @@ const LoginComponent = () => {
     <>
       <GlobalStyleLogin />
       <Wrapper>
+        <div className="wrappp">
+          <div className="left">
+            <img src={login2} alt="" />
+          </div>
+          <div className="right">
+            <img src={login1} alt="" />
+          </div>
+        </div>
         <div className="login-box">
           <div className="titles_box">
-            <i class="bx bxs-user-circle"></i>
+            <img src={logo} alt="" />
             <h2>Авторизоваться</h2>
           </div>
           <form onSubmit={HandleSubmit}>
             <div className="user-box">
-              <input ref={EmailUserf} type="email" name="" required />
-              <label>Имя пользователя</label>
+              <input
+                placeholder="Эл. почта"
+                type="email"
+                name=""
+                required
+                ref={EmailUserf}
+              />
+              {/* <input ref={EmailUserf} type="email" name="" required /> */}
+              {/* <label>Имя пользователя</label> */}
             </div>
             <div className="user-box">
-              <input ref={passwordUsref} type="password" name="" required />
-              <label>Пароль</label>
+              <input
+                ref={passwordUsref}
+                placeholder="Пароль"
+                type="password"
+                name=""
+                required
+              />
             </div>
             {admin.admin?.Error == true ? (
               <p style={{ color: "red" }}>
                 Электронная почта или пароль неверны
               </p>
             ) : null}
-            <button type="submit">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Вход
-            </button>
+            <div className="btnss">
+              <CommonButton type="submit">Вход</CommonButton>
+            </div>
           </form>
         </div>
       </Wrapper>

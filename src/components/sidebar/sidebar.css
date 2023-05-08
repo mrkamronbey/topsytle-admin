@@ -47,7 +47,7 @@
   border-radius: 15px !important;
 }
 
-.ant-menu-item:hover .title{
+.ant-menu-item:hover .title {
   color: #03544c !important;
 }
 
@@ -254,7 +254,7 @@ a {
 
 .ant-layout-sider-children {
   background: #03544c !important;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .ant-menu {
@@ -266,11 +266,13 @@ a {
   background: none !important;
 }
 .ant-layout-content {
+  margin: 0px 16px !important;
+  padding: 14px !important;
   background: none !important;
 }
 .ant-layout-header {
-  border-radius: 15px !important;
-  width: 95% !important;
-  margin-left: 40px !important;
+  border-radius: 20px !important;
+  width: 94% !important;
+  margin-left: 30px !important;
   margin-top: 20px !important;
 }

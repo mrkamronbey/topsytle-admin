@@ -141,7 +141,7 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
         pagination={false}
         scroll={{
           x: 1500,
-          y: 400,
+          y: 330,
         }}
       />
     </>

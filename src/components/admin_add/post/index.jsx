@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import CommonBtn from "../../common/CommonBtn";
 import ModalCommon from "../../common/Modal/Modal";
 import { useDispatch } from "react-redux";
-import { adminAdd } from "../../../redux/admin_add";
+import { adminAdd, adminGet } from "../../../redux/admin_add";
 import { Wrapper } from "./styled-index";
 import { Row, Col } from "react-grid-system";
 import "./styles.css";
@@ -13,16 +13,18 @@ function AdminAddForm({ Open, HandleClose }) {
   const passwordUseRef = useRef();
   const addAdmin = useSelector((state) => state.adminadd);
   const nameUseRef = useRef();
-  const HandleSubmit = (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
     const email = emailUseRef.current.value;
     const password = passwordUseRef.current.value;
     const name = nameUseRef.current.value;
-    dispatch(adminAdd({ email, password, name }));
+    await dispatch(adminAdd({ email, password, name }));
+    dispatch(adminGet());
+    HandleClose();
   };
-  if (addAdmin.AddPost.Success == true) {
-    window.location.reload();
-  }
+  // if (addAdmin.AddPost.Success == true) {
+  //   window.location.reload();
+  // }
   return (
     <ModalCommon width={600} height={350} open={Open} handleClose={HandleClose}>
       <>

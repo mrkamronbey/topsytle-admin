@@ -17,6 +17,7 @@
     "antd-img-crop": "^4.12.2",
     "axios": "^1.2.1",
     "cookies": "^0.8.0",
+    "framer-motion": "^10.12.8",
     "i18next": "^22.4.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.0",

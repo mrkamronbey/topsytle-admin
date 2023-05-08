@@ -15,7 +15,7 @@ function Put({ openPut, handleClosePut, put_id }) {
   const addAdmin = useSelector((state) => state.adminadd);
   const getAdmin = useSelector((state) => state.adminadd.userGet.data);
   const nameUseRef = useRef();
-  const HandleSubmit = async (e) => {
+  const HandleSubmit = (e) => {
     e.preventDefault();
     const body = {
       email: emailUseRef.current.value,
@@ -23,15 +23,19 @@ function Put({ openPut, handleClosePut, put_id }) {
       name: nameUseRef.current.value,
     };
 
-    await dispatch(adminPut({ body, id: ids }));
-    dispatch(adminGet());
+    dispatch(adminPut({ body, id: ids }));
   };
   if (addAdmin.AddPut.Success == true) {
     window.location.reload();
   }
   return (
     <>
-      <ModalCommon width={600} height={350} open={openPut} handleClose={handleClosePut}>
+      <ModalCommon
+        width={600}
+        height={350}
+        open={openPut}
+        handleClose={handleClosePut}
+      >
         <Wrapper onSubmit={HandleSubmit}>
           <h3> Админ изменить</h3>
           <div className="input_wrap">
@@ -43,7 +47,6 @@ function Put({ openPut, handleClosePut, put_id }) {
                       <input
                         type="email"
                         placeholder={elem.email}
-                        required
                         ref={emailUseRef}
                       />
                     </Col>
@@ -51,7 +54,6 @@ function Put({ openPut, handleClosePut, put_id }) {
                       <input
                         type="name"
                         placeholder={elem.name}
-                        required
                         ref={nameUseRef}
                       />
                     </Col>
@@ -59,7 +61,6 @@ function Put({ openPut, handleClosePut, put_id }) {
                       <input
                         type="password"
                         placeholder={elem.password}
-                        required
                         ref={passwordUseRef}
                       />
                     </Col>

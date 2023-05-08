@@ -7,7 +7,7 @@ html {
 body {
   margin:0;
   padding:0;
-  font-family: sans-serif;
+  font-family: "Ubuntu" sans-serif;
   background: linear-gradient(#fff, #fff);
 }
 `;
@@ -17,13 +17,16 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 500px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(100px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(1, 3, 5, 7);
-    border-radius: 10px;
+    /* box-shadow: 0 15px 25px rgba(1, 3, 5, 7); */
+    border-radius: 30px;
+    z-index: 100
   }
 
   .login-box h2 {
@@ -37,7 +40,7 @@ export const Wrapper = styled.div`
     position: relative;
   }
 
-  .login-box .user-box input {
+   /* .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -47,8 +50,8 @@ export const Wrapper = styled.div`
     border-bottom: 1px solid #fff;
     outline: none;
     background: transparent;
-  }
-  .login-box .user-box label {
+  } */
+  /* .login-box .user-box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,7 +60,7 @@ export const Wrapper = styled.div`
     color: #fff;
     pointer-events: none;
     transition: 0.5s;
-  }
+  } */
 
   .login-box .user-box input:focus ~ label,
   .login-box .user-box input:valid ~ label {
@@ -67,7 +70,7 @@ export const Wrapper = styled.div`
     font-size: 12px;
   }
 
-  .login-box form button {
+  /* .login-box form button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -81,28 +84,28 @@ export const Wrapper = styled.div`
     transition: 0.5s;
     margin-top: 40px;
     letter-spacing: 4px;
-  }
+  } */
 
-  .login-box button:hover {
+   /* .login-box button:hover {
     background: #fff;
     color: #000;
     border-radius: 5px;
     box-shadow: 0 0 5px #fff, 0 0 25px #fff, 0 0 50px #fff, 0 0 100px #fff;
-  }
+  }  */
 
   .login-box button span {
     position: absolute;
     display: block;
-  }
+  } 
 
-  .login-box button span:nth-child(1) {
+   .login-box button span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #fff);
     animation: btn-anim1 1s linear infinite;
-  }
+  } 
 
   @keyframes btn-anim1 {
     0% {
@@ -173,4 +176,4 @@ export const Wrapper = styled.div`
       bottom: 100%;
     }
   }
-`;
+`; 

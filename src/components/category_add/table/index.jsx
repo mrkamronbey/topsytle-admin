@@ -1,5 +1,5 @@
 import * as React from "react";
-import './styles.css'
+import "./styles.css";
 import TableCommon from "../../common/table";
 import { useSelector } from "react-redux";
 export default function TableAdd({ onClickDelete, onClickPut }) {
@@ -42,26 +42,12 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       fixed: "right",
     },
   ];
-  const HeaderRows = [
-    {
-      id: 1,
-      title: "Title uz",
-    },
-    {
-      id: 2,
-      title: "Title ru",
-    },
-    {
-      id: 3,
-      title: "Delete",
-      algin: "right",
-    },
-  ];
+
   return (
     <TableCommon
       bordered
       scroll={{
-        y: 400,
+        y: 330,
       }}
       columns={columns}
       data={data}
