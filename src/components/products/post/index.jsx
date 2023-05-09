@@ -9,7 +9,7 @@ import { Row, Col } from "react-grid-system";
 import SelectCommon from "../../common/select/index";
 import "./styles.css";
 
-function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
+function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings }) {
   const dispatch = useDispatch();
   const titleUz = useRef();
   const titleRu = useRef();
@@ -67,10 +67,12 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
     await dispatch(ProductPost(body));
     dispatch(ProductGet());
     HandleClose();
+    
   };
-  // if (productPost.productPost.Success == true) {
-  //   HandleClose();
-  //   window.location.reload();
+  // if (ProductGet.pending) {
+  //   setLoadings(true)
+  // } else if(ProductGet.fulfilled){
+  //   setLoadings(false)
   // }
 
   const options = [];

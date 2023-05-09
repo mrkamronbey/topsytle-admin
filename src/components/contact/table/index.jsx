@@ -1,10 +1,12 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { PostContact } from "../../../redux/contact";
 import TableCommon from "../../common/table";
 export default function TableAdd({ onClickDelete, onClickPut }) {
   const ContactGetState = useSelector(
     (state) => state.contact.getContact?.Data
   );
+  const dispatch = useDispatch()
   const DateFormat = (date) => {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -16,6 +18,10 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
 
     return [day, month, year].join("/");
   };
+
+  React.useEffect(() => {
+   dispatch(PostContact())
+  }, [])
  
   const data = [];
   ContactGetState.map((elem, index) => {

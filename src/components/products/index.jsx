@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ProductDelete, ProductPut, ProductGet } from "../../redux/products/index";
+import {
+  ProductDelete,
+  ProductPut,
+  ProductGet,
+} from "../../redux/products/index";
 import Delete from "./delete";
 import ProductAddForm from "./post";
 import Put from "./put";
@@ -9,6 +13,7 @@ function ProductsComponent({ open, handleClose }) {
   const dispatch = useDispatch();
   const [selectId, setSelectId] = useState(null);
   const [productId, setProductId] = useState();
+  const [loadings, setLoadings] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const handleCloseDelete = () => setOpenDelete(false);
   const handleDeleteModal = (e) => {
@@ -17,8 +22,8 @@ function ProductsComponent({ open, handleClose }) {
   };
 
   useEffect(() => {
-  dispatch(ProductGet())
-  }, [])
+    dispatch(ProductGet());
+  }, []);
 
   const [openPut, setOpenPut] = useState(false);
   const handleClosePut = () => setOpenPut(false);
@@ -27,8 +32,9 @@ function ProductsComponent({ open, handleClose }) {
     setOpenPut(true);
   };
   const HandleDelete = async () => {
-   await dispatch(ProductDelete(productId));
-   dispatch(ProductGet())
+    await dispatch(ProductDelete(productId));
+    dispatch(ProductGet());
+    setLoadings(true);
   };
 
   return (
@@ -38,8 +44,14 @@ function ProductsComponent({ open, handleClose }) {
         selectId={selectId}
         Open={open}
         HandleClose={handleClose}
+        setLoadings={setLoadings}
       />
-      <TableAdd onClickDelete={handleDeleteModal} onClickPut={handlePutModal} />
+      <TableAdd
+        loadings={loadings}
+        onClickDelete={handleDeleteModal}
+        onClickPut={handlePutModal}
+        setLoadings={setLoadings}
+      />
       <Delete
         productId={productId}
         HandleDelete={HandleDelete}
@@ -47,6 +59,7 @@ function ProductsComponent({ open, handleClose }) {
         handleCloseDelete={handleCloseDelete}
       />
       <Put
+        setLoadings={setLoadings}
         setSelectId={setSelectId}
         selectId={selectId}
         put_id={productId}

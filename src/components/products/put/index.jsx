@@ -9,7 +9,7 @@ import { ProductPut, ProductGet } from "../../../redux/products";
 import { CategoryGet } from "../../../redux/category/index";
 import SelectCommon from "../../common/select/index";
 
-function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
+function Put({ openPut, handleClosePut, put_id, setSelectId, selectId, setLoadings }) {
   const ids = put_id;
   const dispatch = useDispatch();
   const titleUz = useRef();
@@ -80,6 +80,7 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
     await dispatch(ProductPut({ body, id: ids }));
     dispatch(ProductGet());
     handleClosePut();
+    setLoadings(true)
   };
   // if (productPut.productPut.Success == true) {
   //   handleClosePut();

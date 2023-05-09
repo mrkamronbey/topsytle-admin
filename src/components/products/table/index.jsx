@@ -3,16 +3,18 @@ import { useSelector } from "react-redux";
 import "./styles.css";
 import TableCommon from "../../common/table";
 
-export default function TableAdd({ onClickDelete, onClickPut }) {
+export default function TableAdd({ onClickDelete, onClickPut, loadings }) {
   const productGetState = useSelector((state) => state.product);
+  const productPost = useSelector((state) => state.product);
   const rows = productGetState.productGet?.data;
-  console.log(rows);
+
+  // productPost.productPost.Success == true ? setLoadings(true) : setLoadings(false)
 
   const data = [];
-  rows.map((elem,index) => {
+  rows.map((elem, index) => {
     data.push({
       key: elem.id,
-      data : index + 1,
+      data: index + 1,
       Имя: (
         <div>
           <span>{elem.title_uz}</span>
@@ -90,7 +92,7 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       fixed: "left",
       align: "center",
     },
-    
+
     {
       title: "Имя",
       dataIndex: "Имя",
