@@ -11,7 +11,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: "Ubuntu", sans-serif;
-    background-color: black;
     color: white;
   }
 

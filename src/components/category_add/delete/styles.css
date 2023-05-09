@@ -9,6 +9,9 @@
   line-height: 19px;
   color: #ffffff;
 }
+.row{
+  margin-top: 40px;
+}
 .col > button > i {
   margin-right: 10px;
   font-size: 20px;
@@ -19,4 +22,6 @@
 }
 .col:nth-child(2) > button {
   background: rgb(235, 50, 50);
+  /* background: rgb(235, 99, 99); */
+  
 }

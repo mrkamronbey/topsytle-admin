@@ -6,8 +6,9 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   const categoryGetState = useSelector((state) => state.category);
   const rows = categoryGetState.categoryGet?.data;
   const data = [];
-  rows.map((elem) => {
+  rows.map((elem, index) => {
     data.push({
+      data: index + 1,
       key: elem.id,
       Имякатегорииузб: elem.category_name_uz,
       Имякатегориирусский: elem.category_name_ru,
@@ -26,6 +27,13 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
 
   const columns = [
     {
+      title: "№",
+      dataIndex: "data",
+      key: "data",
+      width: 50,
+      align: "center",
+    },
+    {
       title: "Имя категории узб",
       dataIndex: "Имякатегорииузб",
       key: "Имякатегорииузб",
@@ -42,6 +50,8 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       fixed: "right",
     },
   ];
+
+  
 
   return (
     <TableCommon

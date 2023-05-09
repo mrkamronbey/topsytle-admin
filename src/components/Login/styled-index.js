@@ -8,7 +8,6 @@ body {
   margin:0;
   padding:0;
   font-family: "Ubuntu" sans-serif;
-  background: linear-gradient(#fff, #fff);
 }
 `;
 

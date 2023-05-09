@@ -14,9 +14,9 @@ export const Wrapper = styled.div`
         color: white;
         cursor: pointer;
     }
-    .Buttons{
+    /* .Buttons{
         display: flex;
         justify-content: space-around;
         margin-top: 40px;
-    }
+    } */
 `

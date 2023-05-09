@@ -12,7 +12,8 @@ function Delete({ openDelete, handleCloseDelete, HandleDelete }) {
         handleClose={handleCloseDelete}
       >
         <Wrapper>
-          <h3>Вы уверены, что хотите удалить данные?</h3>
+          <h3>Вы действительно хотите удалить категорию?</h3>
+          <p>При удалений категорий вся информация принадлежащая данной категории будут удалены безвозратно</p>
           <div className="Buttons">
             <Row className="row">
               <Col className="col" lg={6}>

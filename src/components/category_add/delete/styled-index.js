@@ -4,6 +4,12 @@ export const Wrapper = styled.div`
     h3{
         text-align: center;
         font-size: 26px;
+        text-transform: uppercase;  
+    }
+    p{
+        text-align: center;
+        margin-top: 20px;
+        color: rgb(235, 99, 99);
     }
     button{
         padding: 10px 20px;

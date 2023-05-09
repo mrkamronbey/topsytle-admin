@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CategoryDelete, CategoryPut } from "../../redux/category/index";
 import Delete from "./delete";
 import CategoryAddForm from "./post";
 import Put from "./put";
 import TableAdd from "./table";
 function CategoryAddComponent({ open, handleClose }) {
+  const categorydelete = useSelector((state) => state.category);
   const dispatch = useDispatch();
   const [categoryId, setCategoryId] = useState();
   const [openDelete, setOpenDelete] = useState(false);
@@ -23,6 +24,9 @@ function CategoryAddComponent({ open, handleClose }) {
   const HandleDelete = () => {
     dispatch(CategoryDelete(categoryId));
   };
+  if (categorydelete.categoryDelete.Success == true) {
+    window.location.reload();
+  }
   const HandlePut = () => {
     dispatch(CategoryPut(categoryId));
   };

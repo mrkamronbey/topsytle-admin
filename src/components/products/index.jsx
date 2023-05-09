@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ProductDelete, ProductPut } from "../../redux/products/index";
+import { ProductDelete, ProductPut, ProductGet } from "../../redux/products/index";
 import Delete from "./delete";
 import ProductAddForm from "./post";
 import Put from "./put";
@@ -16,14 +16,19 @@ function ProductsComponent({ open, handleClose }) {
     setOpenDelete(true);
   };
 
+  useEffect(() => {
+  dispatch(ProductGet())
+  }, [])
+
   const [openPut, setOpenPut] = useState(false);
   const handleClosePut = () => setOpenPut(false);
   const handlePutModal = (e) => {
     setProductId(e.currentTarget.id);
     setOpenPut(true);
   };
-  const HandleDelete = () => {
-    dispatch(ProductDelete(productId));
+  const HandleDelete = async () => {
+   await dispatch(ProductDelete(productId));
+   dispatch(ProductGet())
   };
 
   return (

@@ -43,9 +43,9 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
   }, []);
   // category get
 
-  const handleSelect = (e) => {
-    setSelectId(e.currentTarget.value);
-  };
+  useEffect(() => {
+    dispatch(ProductGet());
+  }, []);
 
   const options = [];
   categoryGets.map((elem) =>
@@ -79,11 +79,12 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
 
     await dispatch(ProductPut({ body, id: ids }));
     dispatch(ProductGet());
-  };
-  if (productPut.productPut.Success == true) {
     handleClosePut();
-    window.location.reload();
-  }
+  };
+  // if (productPut.productPut.Success == true) {
+  //   handleClosePut();
+  //   window.location.reload();
+  // }
   return (
     <>
       <ModalCommon

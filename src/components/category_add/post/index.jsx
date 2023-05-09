@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import CommonBtn from "../../common/CommonBtn";
 import ModalCommon from "../../common/Modal/Modal";
 import { useDispatch } from "react-redux";
-import { CategoryAdd } from "../../../redux/category";
+import { CategoryAdd, CategoryGet } from "../../../redux/category";
 import { Wrapper } from "./styled-index";
 import { useSelector } from "react-redux";
 import { Row, Col } from "react-grid-system";
@@ -13,6 +13,9 @@ function CategoryAddForm({ Open, HandleClose }) {
   const titleUz = useRef();
   const titleRu = useRef();
   const categoryAdd = useSelector((state) => state.category);
+  useEffect(() => {
+    dispatch(CategoryGet());
+  }, []);
   const HandleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(
@@ -21,10 +24,12 @@ function CategoryAddForm({ Open, HandleClose }) {
         category_name_ru: titleRu.current.value,
       })
     );
+    dispatch(CategoryGet());
+    HandleClose();
   };
-  if (categoryAdd.categoryPost.Success == true) {
-    window.location.reload();
-  }
+  // if (categoryAdd.categoryPost.Success == true) {
+  //   window.location.reload();
+  // }
   return (
     <ModalCommon width={550} open={Open} handleClose={HandleClose}>
       <>

@@ -18,8 +18,9 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   };
  
   const data = [];
-  ContactGetState.map((elem) => {
+  ContactGetState.map((elem, index) => {
     data.push({
+      data: index + 1,
       key: elem.id,
       Имя: elem.name,
       Телефонныйномер: elem.phone_number,
@@ -28,6 +29,13 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   });
 
   const columns = [
+    {
+      title: "№",
+      dataIndex: "data",
+      key: "data",
+      width: 50,
+      align: "center",
+    },
     {
       title: "Имя",
       dataIndex: "Имя",

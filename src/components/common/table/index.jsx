@@ -10,6 +10,7 @@ function TableCommon({
   scroll,
   className,
   pagination,
+  loading
 }) {
   return (
     <>
@@ -22,6 +23,7 @@ function TableCommon({
         pagination={pagination}
         scroll={scroll}
         summary={summary}
+        loading={loading}
       />
     </>
   );

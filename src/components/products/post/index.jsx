@@ -35,6 +35,10 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
   }, []);
   // category get
 
+  useEffect(() => {
+    dispatch(ProductGet());
+  }, []);
+
   // product post
   const productPost = useSelector((state) => state.product);
   const HandleSubmit = async (e) => {
@@ -59,14 +63,15 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
       guarante_period_ru: guarantePeriodRu.current.value,
       category: selectId,
     };
-    console.log(body);
+
     await dispatch(ProductPost(body));
     dispatch(ProductGet());
-  };
-  if (productPost.productPost.Success == true) {
     HandleClose();
-    window.location.reload();
-  }
+  };
+  // if (productPost.productPost.Success == true) {
+  //   HandleClose();
+  //   window.location.reload();
+  // }
 
   const options = [];
   categoryGets.map((elem) =>

@@ -9,9 +9,10 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   console.log(rows);
 
   const data = [];
-  rows.map((elem) => {
+  rows.map((elem,index) => {
     data.push({
       key: elem.id,
+      data : index + 1,
       Имя: (
         <div>
           <span>{elem.title_uz}</span>
@@ -82,6 +83,14 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   });
 
   const columns = [
+    {
+      title: "№",
+      dataIndex: "data",
+      key: "data",
+      fixed: "left",
+      align: "center",
+    },
+    
     {
       title: "Имя",
       dataIndex: "Имя",

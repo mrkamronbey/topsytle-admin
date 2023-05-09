@@ -1,10 +1,10 @@
 import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryPut, CategoryGet } from "../../../redux/category";
 import CommonBtn from "../../common/CommonBtn";
-import {Row, Col} from 'react-grid-system'
+import { Row, Col } from "react-grid-system";
 
 function Put({ openPut, handleClosePut, HandlePut, put_id }) {
   const ids = put_id;
@@ -13,6 +13,9 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
   const titleRu = useRef();
   const categoryPuts = useSelector((state) => state.category);
   const categoryGets = useSelector((state) => state.category.categoryGet.data);
+  useEffect(() => {
+    dispatch(CategoryGet());
+  }, []);
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -21,11 +24,12 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
     };
     await dispatch(CategoryPut({ body, id: ids }));
     dispatch(CategoryGet());
-  };
-  if (categoryPuts.categoryPut.Success == true) {
     handleClosePut();
-    window.location.reload();
-  }
+  };
+  // if (categoryPuts.categoryPut.Success == true) {
+  //   handleClosePut();
+  //   window.location.reload();
+  // }
   return (
     <>
       <ModalCommon width={550} open={openPut} handleClose={handleClosePut}>
