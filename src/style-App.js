@@ -14,25 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
   }
 
-  ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #5A79E5; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #03544c; 
-    border-radius: 10px;
-  }
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #03544c;
-  }
 `;
 
 export const WrapperContainer = styled.div`
