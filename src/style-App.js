@@ -14,13 +14,32 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
   }
 
+   ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #5A79E5; 
+    border-radius: 10px;
+  }
+   
+ 
+  ::-webkit-scrollbar-thumb {
+    background: #03544c; 
+    border-radius: 10px;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #03544c;
+  }
   
 `;
 
 export const WrapperContainer = styled.div`
   width: 100%;
   background: #fff;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #eeeeee;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   height: 100%;
