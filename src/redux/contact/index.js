@@ -8,6 +8,14 @@ export const GetContact = createAsyncThunk("Form/get", async () => {
 export const PostContact = createAsyncThunk("Form/post", async (body) => {
   return await axios.post(`${API_URL}/form`, body).then((res) => res);
 });
+export const DeleteContact = createAsyncThunk(
+  "category/delete",
+  async (id) => {
+    return await axios
+      .delete(`${API_URL}/form/${id}`)
+      .then((response) => response.data);
+  }
+);
 
 const ContactSlice = createSlice({
   name: "Form",
@@ -22,6 +30,11 @@ const ContactSlice = createSlice({
       Error: false,
       Loading: false,
       Success: false,
+    },
+    deleteContact: {
+      Success: false,
+      Error: false,
+      loading: false,
     },
   },
   extraReducers: {
@@ -52,6 +65,20 @@ const ContactSlice = createSlice({
       state.postContact.Error = true;
       state.postContact.Success = false;
       state.postContact.Loading = false;
+    },
+     // delete
+     [DeleteContact.pending]: (state, action) => {
+      state.deleteContact.loadingDelete = true;
+    },
+    [DeleteContact.fulfilled]: (state, action) => {
+      state.deleteContact.loading = false;
+      state.deleteContact.Success = true;
+      state.deleteContact.Error = false;
+    },
+    [DeleteContact.rejected]: (state, action) => {
+      state.deleteContact.loading = false;
+      state.deleteContact.Error = true;
+      state.deleteContact.Success = false;
     },
   },
 });

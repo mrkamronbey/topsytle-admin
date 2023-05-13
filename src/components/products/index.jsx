@@ -17,7 +17,7 @@ function ProductsComponent({ open, handleClose }) {
   const [openDelete, setOpenDelete] = useState(false);
   const handleCloseDelete = () => setOpenDelete(false);
   const handleDeleteModal = (e) => {
-    setProductId(e.target.id);
+    setProductId(e.currentTarget.id);
     setOpenDelete(true);
   };
 

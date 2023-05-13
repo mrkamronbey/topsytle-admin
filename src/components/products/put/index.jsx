@@ -9,7 +9,14 @@ import { ProductPut, ProductGet } from "../../../redux/products";
 import { CategoryGet } from "../../../redux/category/index";
 import SelectCommon from "../../common/select/index";
 
-function Put({ openPut, handleClosePut, put_id, setSelectId, selectId, setLoadings }) {
+function Put({
+  openPut,
+  handleClosePut,
+  put_id,
+  setSelectId,
+  selectId,
+  setLoadings,
+}) {
   const ids = put_id;
   const dispatch = useDispatch();
   const titleUz = useRef();
@@ -80,12 +87,14 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId, setLoadin
     await dispatch(ProductPut({ body, id: ids }));
     dispatch(ProductGet());
     handleClosePut();
-    setLoadings(true)
+    setLoadings(true);
   };
   // if (productPut.productPut.Success == true) {
   //   handleClosePut();
   //   window.location.reload();
   // }
+  // const findData = productGets.find((elem) => elem.id == ids);
+  // console.log("put_id find", ids ? findData : null);
   return (
     <>
       <ModalCommon
@@ -114,112 +123,113 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId, setLoadin
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.title_uz}
+                          defaultValue={elem.title_uz}
                           ref={titleUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.title_ru}
+                          defaultValue={elem.title_ru}
                           ref={titleRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
+                        
                           type="text"
-                          placeholder={elem.product_type_uz}
+                          defaultValue={elem.product_type_uz}
                           ref={productTypeUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.product_type_ru}
+                          defaultValue={elem.product_type_ru}
                           ref={productTypeRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.completeness_uz}
+                          defaultValue={elem.completeness_uz}
                           ref={completenessUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.completeness_ru}
+                          defaultValue={elem.completeness_ru}
                           ref={completenessRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.purpose_uz}
+                          defaultValue={elem.purpose_uz}
                           ref={purposeUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.purpose_ru}
+                          defaultValue={elem.purpose_ru}
                           ref={purposeRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.color_uz}
+                          defaultValue={elem.color_uz}
                           ref={colorUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.color_ru}
+                          defaultValue={elem.color_ru}
                           ref={colorRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.main_fabric_uz}
+                          defaultValue={elem.main_fabric_uz}
                           ref={mainFabricUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.main_fabric_ru}
+                          defaultValue={elem.main_fabric_ru}
                           ref={mainFabricRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.compound_uz}
+                          defaultValue={elem.compound_uz}
                           ref={compoundUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.compound_ru}
+                          defaultValue={elem.compound_ru}
                           ref={compoundRu}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.guarante_period_uz}
+                          defaultValue={elem.guarante_period_uz}
                           ref={guarantePeriodUz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.guarante_period_ru}
+                          defaultValue={elem.guarante_period_ru}
                           ref={guarantePeriodRu}
                         />
                       </Col>
@@ -227,6 +237,7 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId, setLoadin
                   </>
                 ) : null
               )}
+
 
               <CommonBtn
                 type="submit"

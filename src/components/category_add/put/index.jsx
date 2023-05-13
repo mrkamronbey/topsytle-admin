@@ -1,6 +1,6 @@
 import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryPut, CategoryGet } from "../../../redux/category";
 import CommonBtn from "../../common/CommonBtn";
@@ -11,6 +11,8 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
   const dispatch = useDispatch();
   const titleUz = useRef();
   const titleRu = useRef();
+  // const [titleUz, setTitleUz] = useState(null);
+  // const[titleRu, setTitleRu] = useState(null);
   const categoryPuts = useSelector((state) => state.category);
   const categoryGets = useSelector((state) => state.category.categoryGet.data);
   useEffect(() => {
@@ -21,6 +23,8 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
     const body = {
       category_name_uz: titleUz.current.value,
       category_name_ru: titleRu.current.value,
+      // category_name_uz: titleUz,
+      // category_name_ru: titleRu,
     };
     await dispatch(CategoryPut({ body, id: ids }));
     dispatch(CategoryGet());
@@ -44,17 +48,19 @@ function Put({ openPut, handleClosePut, HandlePut, put_id }) {
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.category_name_uz}
-                          required
+                          // onChange={(e) => setTitleUz(e.target.value)}
+                          // placeholder={elem.category_name_uz}
                           ref={titleUz}
+                          defaultValue={elem.category_name_uz}
                         />
                       </Col>
                       <Col className="col" lg={6}>
                         <input
                           type="text"
-                          placeholder={elem.category_name_ru}
-                          required
+                          // onChange={(e) => setTitleRu(e.target.value)}
+                          // placeholder={elem.category_name_ru}
                           ref={titleRu}
+                          defaultValue={elem.category_name_ru}
                         />
                       </Col>
                     </>

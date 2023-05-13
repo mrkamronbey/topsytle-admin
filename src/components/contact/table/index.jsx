@@ -2,11 +2,12 @@ import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PostContact } from "../../../redux/contact";
 import TableCommon from "../../common/table";
-export default function TableAdd({ onClickDelete, onClickPut }) {
+import './styles.css'
+export default function TableAdd({ onClickDelete }) {
   const ContactGetState = useSelector(
     (state) => state.contact.getContact?.Data
   );
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const DateFormat = (date) => {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -20,9 +21,9 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   };
 
   React.useEffect(() => {
-   dispatch(PostContact())
-  }, [])
- 
+    dispatch(PostContact());
+  }, []);
+
   const data = [];
   ContactGetState.map((elem, index) => {
     data.push({
@@ -31,6 +32,13 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       Имя: elem.name,
       Телефонныйномер: elem.phone_number,
       Времяденьмесяцгод: DateFormat(elem.createdAt),
+      Действие: (
+        <div className="btn-wrap">
+          <button onClick={onClickDelete} id={elem.id}>
+            <i id={elem.id} class="bx bxs-trash"></i>
+          </button>
+        </div>
+      ),
     });
   });
 
@@ -58,9 +66,14 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
       dataIndex: "Времяденьмесяцгод",
       key: "Времяденьмесяцгод",
     },
+    {
+      title: "Действие",
+      dataIndex: "Действие",
+      key: "Действие",
+      fixed: "right",
+    },
   ];
   return (
-    
     <>
       <TableCommon
         bordered
