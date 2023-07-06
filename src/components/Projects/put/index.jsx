@@ -43,7 +43,7 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
 
   return (
     <>
-      <ModalCommon width={340} open={openPut} handleClose={handleClosePut}>
+      <ModalCommon open={openPut} handleClose={handleClosePut}>
         <Wrapper onSubmit={HandleSubmit}>
           <h3>Изображение изменить</h3>
 
@@ -68,6 +68,10 @@ function Put({ openPut, handleClosePut, put_id, setSelectId, selectId }) {
               </label>
             </>
           )}
+          <div className="infor_box">
+            <p style={{ color: "#fff" }}><span>Формат :  </span>PNG, JPEG, JPG, SVG. Рекомендуемое разрешение <span>1080×1080</span></p>
+            <p style={{ color: "#fff" }}> <span>Размер :  </span>размер файла не должен превышать <span>5 MB</span></p>
+          </div>
 
           {data.getProjects?.Data.map((elem) =>
             elem.id == put_id ? (

@@ -52,8 +52,9 @@ export default function TableAdd({ onClickDelete, onClickPut, selectId }) {
                       <Image
                         style={{
                           width: "100%",
-                          height: "150px",
+                          height: "100%",
                           objectFit: "cover",
+                          aspectRatio: 1 / 1
                         }}
                         src={elem.image}
                       />

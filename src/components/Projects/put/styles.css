@@ -1,11 +1,26 @@
-.ant-modal{
-    z-index: 99999999 !important;
+.ant-modal {
+  z-index: 99999999 !important;
 }
-.ant-modal-mask{
-    background-color: transparent !important;
-    z-index: 99999 !important;
+.ant-modal-mask {
+  background-color: transparent !important;
+  z-index: 99999 !important;
 }
-.ant-modal-wrap{
-    z-index: 99999 !important;
+.ant-modal-wrap {
+  z-index: 99999 !important;
 }
 
+.infor_box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.infor_box > p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  /* text-align: justify; */
+}
+
+.infor_box > p > span {
+  font-weight: bold;
+  text-transform: uppercase;
+}

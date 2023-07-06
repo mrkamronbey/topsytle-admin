@@ -15,21 +15,21 @@ export default function TableAdd({ onClickDelete, onClickPut, loadings }) {
     data.push({
       key: elem.id,
       data: index + 1,
-      Имя: (
+      Имяпродукта: (
         <div>
           <span>{elem.title_uz}</span>
           <br />
           <span>{elem.title_ru}</span>
         </div>
       ),
-      Типпродукта: (
+      Видизделия: (
         <div>
           <span>{elem.product_type_uz}</span>
           <br />
           <span>{elem.product_type_ru}</span>
         </div>
       ),
-      Завершенность: (
+      Комплектность: (
         <div>
           <span>{elem.completeness_uz}</span>
           <br />
@@ -50,14 +50,14 @@ export default function TableAdd({ onClickDelete, onClickPut, loadings }) {
           <span>{elem.color_ru}</span>
         </div>
       ),
-      Тканьосновная: (
+      Основнаяткань: (
         <div>
           <span>{elem.main_fabric_uz}</span>
           <br />
           <span>{elem.main_fabric_ru}</span>
         </div>
       ),
-      Соединение: (
+      Состав: (
         <div>
           <span>{elem.compound_uz}</span>
           <br />
@@ -94,20 +94,20 @@ export default function TableAdd({ onClickDelete, onClickPut, loadings }) {
     },
 
     {
-      title: "Имя",
-      dataIndex: "Имя",
-      key: "Имя",
+      title: "Имя продукта",
+      dataIndex: "Имяпродукта",
+      key: "Имяпродукта",
       fixed: "left",
     },
     {
-      title: "Тип продукта",
-      dataIndex: "Типпродукта",
-      key: "Типпродукта",
+      title: "Вид изделия",
+      dataIndex: "Видизделия",
+      key: "Видизделия",
     },
     {
-      title: "Завершенность",
-      dataIndex: "Завершенность",
-      key: "Завершенность",
+      title: "Комплектность",
+      dataIndex: "Комплектность",
+      key: "Комплектность",
     },
     {
       title: "Назначение",
@@ -120,14 +120,14 @@ export default function TableAdd({ onClickDelete, onClickPut, loadings }) {
       key: "Цвет",
     },
     {
-      title: "Ткань основная",
-      dataIndex: "Тканьосновная",
-      key: "Тканьосновная",
+      title: "Основная ткань",
+      dataIndex: "Основнаяткань",
+      key: "Основнаяткань",
     },
     {
-      title: "Соединение",
-      dataIndex: "Соединение",
-      key: "Соединение",
+      title: "Состав",
+      dataIndex: "Состав",
+      key: "Состав",
     },
     {
       title: "Гарантийный срок",

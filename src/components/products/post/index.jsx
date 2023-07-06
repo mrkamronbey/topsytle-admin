@@ -104,7 +104,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Имя узб..."
+                    placeholder="Имя продукта узб..."
                     required
                     ref={titleUz}
                   />
@@ -112,7 +112,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Имя русский..."
+                    placeholder="Имя продукта русский..."
                     required
                     ref={titleRu}
                   />
@@ -120,7 +120,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Тип продукта узб..."
+                    placeholder="Вид изделия узб..."
                     required
                     ref={productTypeUz}
                   />
@@ -128,7 +128,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Тип продукта русский..."
+                    placeholder="Вид изделия русский..."
                     required
                     ref={productTypeRu}
                   />
@@ -136,7 +136,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Завершенность узб..."
+                    placeholder="Комплектность узб..."
                     required
                     ref={completenessUz}
                   />
@@ -144,7 +144,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Завершенность русский..."
+                    placeholder="Комплектность русский..."
                     required
                     ref={completenessRu}
                   />
@@ -184,7 +184,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Ткань основная узб..."
+                    placeholder="Основная ткань узб..."
                     required
                     ref={mainFabricUz}
                   />
@@ -192,7 +192,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Ткань основная русский..."
+                    placeholder="Основная ткань русский..."
                     required
                     ref={mainFabricRu}
                   />
@@ -200,7 +200,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Соединение узб..."
+                    placeholder="Состав узб..."
                     required
                     ref={compoundUz}
                   />
@@ -208,7 +208,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId, setLoadings 
                 <Col className="col" lg={6}>
                   <input
                     type="text"
-                    placeholder="Соединение русский..."
+                    placeholder="Состав русский..."
                     required
                     ref={compoundRu}
                   />

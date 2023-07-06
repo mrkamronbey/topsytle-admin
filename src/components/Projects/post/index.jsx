@@ -27,7 +27,7 @@ function ProjectAddForm({ Open, HandleClose, setSelectId, selectId }) {
     await dispatch(UploadImage(e));
   };
 
- 
+
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -75,6 +75,11 @@ function ProjectAddForm({ Open, HandleClose, setSelectId, selectId }) {
               </label>
             </>
           )}
+
+          <div className="infor_box">
+            <p style={{ color: "#fff" }}><span>Формат :  </span>PNG, JPEG, JPG, SVG. Рекомендуемое разрешение <span>1080×1080</span></p>
+            <p style={{ color: "#fff" }}> <span>Размер :  </span>размер файла не должен превышать <span>5 MB</span></p>
+          </div>
 
           <CommonBtn
             type={"submit"}
